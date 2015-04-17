@@ -3,7 +3,7 @@
  * https://github.com/bitExpert/grunt-mntyjs
  *
  * Copyright (c) 2015 bitExpert
- * Licensed under the MIT license.
+ * Licensed under the Apache 2 license.
  */
 
 module.exports = function (grunt) {
@@ -32,11 +32,12 @@ module.exports = function (grunt) {
             done = this.async(),
             options,
             mounts,
+            dataAttr,
             requireTryCatch;
 
         options = this.options({
             loadFrom: '',
-            mountPoint: 'data-mount',
+            mountPoint: 'mount',
             include: [],
             logLevel: grunt.option('verbose') ? LOG_LEVEL_TRACE : LOG_LEVEL_WARN,
             done: function (done) {
@@ -44,7 +45,15 @@ module.exports = function (grunt) {
             }
         });
 
-        mounts = extractor(grunt, this.files, options.loadFrom, options.mountPoint);
+        dataAttr = options.mountPoint;
+
+        if (dataAttr.substr(0, 5) !== 'data-') {
+            dataAttr = 'data-' + dataAttr;
+        }
+
+        //@TODO: Check validity of dataAttr and throw error if invalid
+
+        mounts = extractor(grunt, this.files, options.loadFrom, dataAttr);
 
         // we do not need the option anymore
         delete options.loadFrom;
