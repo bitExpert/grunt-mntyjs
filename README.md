@@ -1,2 +1,3 @@
 # grunt-mntyjs
-Grunt task for mnty.js
+
+> Grunt plugin to build your mnty.js project
