@@ -1,7 +1,7 @@
 {
   "name": "grunt-mntyjs",
   "description": "Grunt plugin to build your mnty.js project",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/bitExpert/grunt-mntyjs",
   "author": {
     "name": "Peter Hildenbrand",
